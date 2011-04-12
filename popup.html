@@ -1,1 +1,15 @@
-<h1>My Personal Shortner</h1>
+<script type="text/javascript">
+var request = new XMLHttpRequest();
+request.open("GET", "http://tosh.io/Api/", true);
+request.onreadystatechange  = handleRequest;
+request.send();
+
+function handleRequest() {
+	if (request.readyState == 4 /* complete */ && request.status == 200) {
+		var result = JSON.parse(request.responseText);
+		document.getElementById('hello').innerText = result.Welcome;
+    }
+}
+</script>
+
+<h1 id="hello"></h1>
