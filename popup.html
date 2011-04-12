@@ -17,9 +17,8 @@
 			});
 		}
 		
-		var request;
 		function createRequest(url){
-			request = new XMLHttpRequest();
+			var request = new XMLHttpRequest();
 			request.open("POST", settings.serviceUrl, true);
 			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			request.onreadystatechange  = handleRequest;
@@ -27,9 +26,9 @@
 		}
 		
 		function handleRequest() {
-			if (request.readyState == 4) {
-				var result = JSON.parse(request.responseText);
-				if(request.status == 200) {
+			if (this.readyState == 4) {
+				var result = JSON.parse(this.responseText);
+				if(this.status == 200) {
 					handleSuccess(result.Url);
 				}
 				else {
