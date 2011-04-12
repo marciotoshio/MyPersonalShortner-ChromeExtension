@@ -1,15 +1,38 @@
-<script type="text/javascript">
-var request = new XMLHttpRequest();
-request.open("GET", "http://tosh.io/Api/", true);
-request.onreadystatechange  = handleRequest;
-request.send();
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		function init() {
+			getCurrentUrl();
+			createRequest();
+		}
+		
+		function getCurrentUrl()
+		{
+			chrome.tabs.getSelected(null, function(tab){
+				document.getElementById('currentUrl').innerText = tab.url;
+			});
+		}
+		
+		var request;
+		function createRequest(){
+			request = new XMLHttpRequest();
+			request.open("GET", "http://localhost:7981/Api", true);
+			request.onreadystatechange  = handleRequest;
+			request.send();
+		}
+		
+		function handleRequest() {
+			if (request.readyState == 4 /* complete */ && request.status == 200) {
+				var result = JSON.parse(request.responseText);
+				document.getElementById('shortnedUrl').innerText = result.Welcome;
+			}
+		}
+	</script>
+</head>
+<body onload="init();">
+<p>Current url: <span id="currentUrl"></span></p>
+<p>Api response: <span id="shortnedUrl"></span></p>
+</body>
+</html>
 
-function handleRequest() {
-	if (request.readyState == 4 /* complete */ && request.status == 200) {
-		var result = JSON.parse(request.responseText);
-		document.getElementById('hello').innerText = result.Welcome;
-    }
-}
-</script>
-
-<h1 id="hello"></h1>
