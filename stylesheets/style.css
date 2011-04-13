@@ -1,0 +1,16 @@
+#container {
+	margin:3px;
+	padding:3px;
+	width: 300px;
+	border: 1px solid #ccc;
+}
+
+#loading {
+	text-align: center;
+}
+.rounded
+{
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
