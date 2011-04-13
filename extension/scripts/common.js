@@ -18,6 +18,7 @@ var common = {
 			common.createErrorMessages(ul, error.Errors);
 		}
 		document.getElementById('error').style.display = "block";
+		document.getElementById('loading').style.display = "none";
 	},
 	
 	createErrorMessages: function(ul, messages) {
@@ -28,4 +29,4 @@ var common = {
 			ul.appendChild(li);
 		}
 	}
-}
+};

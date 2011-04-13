@@ -1,6 +1,6 @@
 var settings = {
 	serviceUrl: "http://localhost:7981/Api/Shorten"
-}
+};
 
 var shortner = {
 	init: function() {
@@ -30,4 +30,4 @@ var shortner = {
 		document.getElementById('error').style.display = "none";
 		document.getElementById('loading').style.display = "none";
 	}
-}
+};

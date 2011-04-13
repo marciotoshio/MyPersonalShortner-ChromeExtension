@@ -1,22 +1,21 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="stylesheets/popup.css" /> 
 	<script type="text/javascript" src="scripts/common.js"></script>
 	<script type="text/javascript" src="scripts/shortner.js"></script>
 </head>
 <body onload="shortner.init();">
-<div id="container" class="rounded">
-	<header>Some Text</header>
-	<div id="success">
-		<div id="loading"><img src="images/ajax-loader.gif" alt="loading..."/><br />shortening...</div>
-		<textarea id="shortnedUrl" class="rounded"></textarea>
+	<div id="container" class="rounded">
+		<header>Some Text</header>
+		<div id="success">
+			<div id="loading"><img src="images/ajax-loader.gif" alt="loading..."/><br />shortening...</div>
+			<textarea id="shortnedUrl" class="rounded"></textarea>
+		</div>
+		<div id="error" class="rounded" style="display:none;">
+			<p id="errorTitle"></p>
+			<ul id="errorMessages"></ul>
+		</div>
 	</div>
-	<div id="error" class="rounded" style="display:none;">
-		<p id="errorTitle"></p>
-		<ul id="errorMessages"></ul>
-	</div>
-</div>
 </body>
 </html>
 
