@@ -6,12 +6,12 @@
 </head>
 <body onload="init();">
 <div id="container" class="rounded">
-	<div id="loading"><img src="images/ajax-loader.gif" alt="loading..."/><br />shortening...</div>
+	<header>Some Text</header>
 	<div id="success">
-		<p>your url: <span id="shortnedUrl"></span></p>
+		<div id="loading"><img src="images/ajax-loader.gif" alt="loading..."/><br />shortening...</div>
+		<textarea id="shortnedUrl" class="rounded"></textarea>
 	</div>
-
-	<div id="error" style="display:none;">
+	<div id="error" class="rounded" style="display:none;">
 		<p id="errorTitle"></p>
 		<ul id="errorMessages"></ul>
 	</div>

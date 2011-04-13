@@ -34,7 +34,7 @@ function handleRequest() {
 }
 
 function handleSuccess(url) {
-	document.getElementById('shortnedUrl').innerText = url;
+	document.getElementById('shortnedUrl').value = url;
 	document.getElementById('success').style.display = "block";
 	document.getElementById('error').style.display = "none";
 	document.getElementById('loading').style.display = "none";
