@@ -3,6 +3,7 @@
 	<link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
 	<link rel="stylesheet" type="text/css" href="stylesheets/popup.css" /> 
 	<script type="text/javascript" src="scripts/common.js"></script>
+	<script type="text/javascript" src="scripts/twitter.js"></script>
 	<script type="text/javascript" src="scripts/shortner.js"></script>
 </head>
 <body onload="shortner.init();">
@@ -11,6 +12,11 @@
 		<div id="success">
 			<div id="loading"><img src="images/ajax-loader.gif" alt="loading..."/><br />shortening...</div>
 			<textarea id="shortnedUrl" class="rounded"></textarea>
+			<section id="sharing">
+				<p id="sharingWith" style="display:none;">Sharing with: </p>
+				<input type="button" value="share" onclick="shortner.share();" />
+				<br clear="all" />
+			</section>
 		</div>
 		<div id="error" class="rounded" style="display:none;">
 			<p id="errorTitle"></p>

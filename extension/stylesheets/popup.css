@@ -23,12 +23,30 @@ header {
 	font-family: Arial, sans-serif;
 }
 
+#sharing {
+	margin: 0 10px;
+	text-align: left;
+}
+
+#sharingWith {
+	float: left;
+}
+
+#sharing input {
+	float: right;
+}
+
+img.share {
+	vertical-align: text-bottom;
+}
+
 #error {
 	width: 372px;
 	margin: 3px auto;
 	padding: 3px;
 	border: 1px solid #f00;
     background-color: #faa;
+	clear: both;
 }
 
 #errorTitle {

@@ -1,6 +1,7 @@
 var shortner = {
 	init: function() {
 		shortner.getCurrentUrl();
+		shortner.manageSharingWith();
 	},
 	
 	getServiceUrl: function() {
@@ -29,6 +30,8 @@ var shortner = {
 			}
 			else {
 				common.handleError(result);
+				document.getElementById('loading').style.display = "none";
+				document.getElementById('sharing').style.display = "none";
 			}
 		}
 	},
@@ -37,5 +40,23 @@ var shortner = {
 		document.getElementById('shortnedUrl').value = url;
 		document.getElementById('error').style.display = "none";
 		document.getElementById('loading').style.display = "none";
+	},
+	
+	manageSharingWith: function() {
+		var p = document.getElementById('sharingWith');
+		if(twitter.isLoggedOn())
+		{
+			var img = shortner.createImage('images/twitter.png', 'Twitter');
+			p.appendChild(img);
+		}
+		p.style.display = "block";
+	},
+	
+	createImage: function(src, alt) {
+		var img = document.createElement('img');
+		img.setAttribute('src', src);
+		img.setAttribute('alt', alt);
+		img.setAttribute('class', 'share');
+		return img;
 	}
 };
