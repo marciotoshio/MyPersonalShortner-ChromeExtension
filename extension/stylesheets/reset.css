@@ -1,0 +1,15 @@
+html, body, div, span, header
+h1, h2, h3, p, img, strong, 
+ul, li, form, label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body { 
+	font: 13px/1.231 "Helvetica Neue", Arial, sans-serif; 
+	*font-size:small; 
+}

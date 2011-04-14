@@ -1,5 +1,6 @@
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
 	<link rel="stylesheet" type="text/css" href="stylesheets/options.css" />
 	<script type="text/javascript" src="scripts/common.js"></script>
 	<script type="text/javascript" src="scripts/twitter.js"></script>
@@ -8,6 +9,12 @@
 <body onload="options.init();">
 	<h1>My Url Shortner - Options</h1>
 	<div id="container">
+		<section id="shortner">
+			<fieldset>
+				<legend>Shortner</legend>
+				<p>Service URL: <input type="text" /></p>
+			</fieldset>
+		</section>
 		<section id="twitter">
 			<fieldset>
 				<legend>Twitter</legend>
@@ -18,6 +25,9 @@
 					<p><input type="button" value="Log In" onclick="options.twitterSingIn();" /></p> 
 				</section>
 			</fieldset>
+		</section>
+		<section id="save">
+			<input type="button" value="Save" />
 		</section>
 	</div>
 </body>

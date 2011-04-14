@@ -27,5 +27,9 @@ var options = {
 	
 	twitterOnAuthorized: function(token, secret) {
 		options.manageTwitterSections();
+	},
+	
+	save: function() {
+		
 	}
 };
