@@ -1,7 +1,7 @@
 var common = {
 	xhrRequest: function (url, method, params, callback) {
 		var request = new XMLHttpRequest();
-		request.open(method, settings.serviceUrl, true);
+		request.open(method, url, true);
 		if(method == 'POST')
 		{
 			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -1,15 +1,23 @@
-var settings = {
-	serviceUrl: "http://localhost:7981/Api/Shorten"
-};
-
 var shortner = {
 	init: function() {
 		shortner.getCurrentUrl();
 	},
 	
+	getServiceUrl: function() {
+		return localStorage['shortnerServiceUrl'];
+	},
+	
 	getCurrentUrl: function() {
 		chrome.tabs.getSelected(null, function(tab){
-			common.xhrRequest(settings.serviceUrl, 'POST', 'url=' + tab.url, shortner.handleRequest);
+			var serviceUrl = shortner.getServiceUrl();
+			if(serviceUrl != null)
+			{
+				common.xhrRequest(serviceUrl, 'POST', 'url=' + tab.url, shortner.handleRequest);
+			}
+			else
+			{
+				common.handleError({'Message': 'Service url not saved. Please go to the options page.'})
+			}
 		});
 	},
 	

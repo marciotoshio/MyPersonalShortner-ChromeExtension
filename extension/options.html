@@ -12,7 +12,8 @@
 		<section id="shortner">
 			<fieldset>
 				<legend>Shortner</legend>
-				<p>Service URL: <input type="text" /></p>
+				<p>Service URL: <input type="text" id="serviceUrl" /> <input type="button" value="Save" onclick="options.save();" /></p>
+				<p id="saveMessage"></p>
 			</fieldset>
 		</section>
 		<section id="twitter">
@@ -25,9 +26,6 @@
 					<p><input type="button" value="Log In" onclick="options.twitterSingIn();" /></p> 
 				</section>
 			</fieldset>
-		</section>
-		<section id="save">
-			<input type="button" value="Save" />
 		</section>
 	</div>
 </body>

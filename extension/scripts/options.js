@@ -1,9 +1,16 @@
 var options = {
 	init: function() {
-		options.manageTwitterSections();
+		options.manageShortnerSection();
+		options.manageTwitterSection();
 	},
+	/* Shortner */
+	manageShortnerSection: function() {
+		document.getElementById('serviceUrl').value = localStorage['shortnerServiceUrl'] || "";
+	},
+	/* /Shortner */
 	
-	manageTwitterSections: function() {
+	/* Twitter */
+	manageTwitterSection: function() {
 		if(twitter.isLoggedOn())
 		{
 			document.getElementById('loggedOn').style.display = "block";
@@ -22,14 +29,15 @@ var options = {
 	
 	twitterLogOut: function() {
 		twitter.logOut();
-		options.manageTwitterSections();
+		options.manageTwitterSection();
 	},
 	
 	twitterOnAuthorized: function(token, secret) {
-		options.manageTwitterSections();
+		options.manageTwitterSection();
 	},
-	
+	/* /Twitter */
 	save: function() {
-		
+		localStorage['shortnerServiceUrl'] = document.getElementById('serviceUrl').value;
+		document.getElementById('saveMessage').innerText = "Saved!";
 	}
 };
