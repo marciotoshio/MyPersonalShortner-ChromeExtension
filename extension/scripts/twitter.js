@@ -9,12 +9,14 @@ var twitter = {
 	
 	authorize: function(callback) {
 		common.bgPage().oauth.authorize(callback);
-	}
+	},
 	
-	//updateStatus: function(status, callback) {
-	//	var url = 'http://api.twitter.com/1/statuses/update.json';
-	//	var method = 'POST';
-	//	var params = {'status': status};
-	//	common.bgPage().sendSignedRequest(url, callback, request);
-	//}
+	updateStatus: function(status, callback) {
+		var url = 'http://api.twitter.com/1/statuses/update.json';
+		var request = {
+			'method': 'POST',
+			'body': 'status=' + encodeURIComponent(status)
+		};
+		common.bgPage().oauth.sendSignedRequest(url, callback, request);
+	}
 };

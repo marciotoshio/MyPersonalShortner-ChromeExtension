@@ -58,5 +58,26 @@ var shortner = {
 		img.setAttribute('alt', alt);
 		img.setAttribute('class', 'share');
 		return img;
+	},
+	
+	share: function () {
+		var text = document.getElementById('shortnedUrl').value;
+		if(text != '')
+		{
+			shortner.shareWithTwitter(text);
+		}
+		else
+		{
+			common.handleError({'Message': 'Nothing to share!'})
+		}
+	},
+	
+	shareWithTwitter: function(status) {
+		twitter.updateStatus(status, shortner.handleTwitterUpdate);
+	},
+	
+	handleTwitterUpdate: function(resp, xhr) {
+		a = resp;
 	}
+	
 };
