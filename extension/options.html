@@ -1,8 +1,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="stylesheets/options.css" />
-	<script type="text/javascript" src="scripts/chrome_ex_oauthsimple.js"></script>
-	<script type="text/javascript" src="scripts/chrome_ex_oauth.js"></script>
+	<script type="text/javascript" src="scripts/common.js"></script>
 	<script type="text/javascript" src="scripts/twitter.js"></script>
 	<script type="text/javascript" src="scripts/options.js"></script>
 </head>
@@ -13,10 +12,10 @@
 			<fieldset>
 				<legend>Twitter</legend>
 				<section id="loggedOn">
-					<p>You are logged on. <input type="button" value="Log Off " /></p> 
+					<p>You are logged on. <input type="button" value="Log Off" onclick="options.twitterLogOut();" /></p> 
 				</section>
 				<section id="loggedOff">
-					<p><input type="button" value="Log In " /></p> 
+					<p><input type="button" value="Log In" onclick="options.twitterSingIn();" /></p> 
 				</section>
 			</fieldset>
 		</section>

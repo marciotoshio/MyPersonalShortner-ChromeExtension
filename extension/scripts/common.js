@@ -1,5 +1,5 @@
 var common = {
-	createXhrRequest: function (url, method, params, callback) {
+	xhrRequest: function (url, method, params, callback) {
 		var request = new XMLHttpRequest();
 		request.open(method, settings.serviceUrl, true);
 		if(method == 'POST')
@@ -28,5 +28,9 @@ var common = {
 			li.innerText = messages[i];
 			ul.appendChild(li);
 		}
+	},
+	
+	bgPage: function() {
+		return chrome.extension.getBackgroundPage();
 	}
 };

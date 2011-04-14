@@ -4,8 +4,7 @@ var options = {
 	},
 	
 	manageTwitterSections: function() {
-		var twitterOauth = twitter.init();
-		if(twitter.isLoggedOn(twitterOauth))
+		if(twitter.isLoggedOn())
 		{
 			document.getElementById('loggedOn').style.display = "block";
 			document.getElementById('loggedOff').style.display = "none";
@@ -15,5 +14,18 @@ var options = {
 			document.getElementById('loggedOn').style.display = "none";
 			document.getElementById('loggedOff').style.display = "block";
 		}
+	},
+	
+	twitterSingIn: function() {
+		twitter.authorize(options.twitterOnAuthorized);
+	},
+	
+	twitterLogOut: function() {
+		twitter.logOut();
+		options.manageTwitterSections();
+	},
+	
+	twitterOnAuthorized: function(token, secret) {
+		options.manageTwitterSections();
 	}
 };

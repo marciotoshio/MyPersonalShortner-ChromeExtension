@@ -73,15 +73,15 @@ ChromeExOAuth.initBackgroundPage = function(oauth_config) {
   var url_match = chrome.extension.getURL(window.chromeExOAuth.callback_page);
   var tabs = {};
   chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (changeInfo.url &&
-        changeInfo.url.substr(0, url_match.length) === url_match &&
-        changeInfo.url != tabs[tabId] &&
-        window.chromeExOAuthRequestingAccess == false) {
-      chrome.tabs.create({ 'url' : changeInfo.url }, function(tab) {
-        tabs[tab.id] = tab.url;
-        chrome.tabs.remove(tabId);
-      });
-    }
+	if (changeInfo.url &&
+		changeInfo.url.substr(0, url_match.length) === url_match &&
+		changeInfo.url != tabs[tabId] &&
+		window.chromeExOAuthRequestingAccess == false) {
+			chrome.tabs.create({ 'url' : changeInfo.url }, function(tab) {
+				tabs[tab.id] = tab.url;
+				chrome.tabs.remove(tabId);
+			});
+	}
   });
 
   return window.chromeExOAuth;

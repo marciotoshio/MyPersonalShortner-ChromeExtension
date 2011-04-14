@@ -9,7 +9,7 @@ var shortner = {
 	
 	getCurrentUrl: function() {
 		chrome.tabs.getSelected(null, function(tab){
-			common.createXhrRequest(settings.serviceUrl, 'POST', 'url=' + tab.url, shortner.handleRequest);
+			common.xhrRequest(settings.serviceUrl, 'POST', 'url=' + tab.url, shortner.handleRequest);
 		});
 	},
 	

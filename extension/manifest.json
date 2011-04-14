@@ -1,7 +1,11 @@
 {
 	"name": "My Personal Shortner",
 	"version": "0.1",
-	"permissions": ["tabs"],
+	"permissions": [
+		"tabs",
+		"http://api.twitter.com/",
+		"https://api.twitter.com/"
+	],
 	"browser_action": {
 		"default_icon": "images/icon16.png",
 		"popup": "popup.html"
@@ -11,5 +15,6 @@
 		"48": "images/icon48.png",
 		"128": "images/icon128.png" 
 	},
+	"background_page": "background.html",
 	"options_page": "options.html"
 }
