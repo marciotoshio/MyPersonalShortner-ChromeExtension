@@ -5,7 +5,7 @@ var shortner = {
 	},
 	
 	getServiceUrl: function() {
-		return localStorage['shortnerServiceUrl'];
+		return localStorage['shortnerServiceDomain'] + localStorage['shortnerServicePath'];
 	},
 	
 	getCurrentUrl: function() {

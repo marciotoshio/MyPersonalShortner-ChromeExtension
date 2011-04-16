@@ -5,7 +5,8 @@ var options = {
 	},
 	/* Shortner */
 	manageShortnerSection: function() {
-		document.getElementById('serviceUrl').value = localStorage['shortnerServiceUrl'] || "";
+		document.getElementById('serviceDomain').value = localStorage['shortnerServiceDomain'] || "";
+		document.getElementById('servicePath').value = localStorage['shortnerServicePath'] || "";
 	},
 	/* /Shortner */
 	
@@ -47,7 +48,8 @@ var options = {
 	},
 	/* /Twitter */
 	save: function() {
-		localStorage['shortnerServiceUrl'] = document.getElementById('serviceUrl').value;
+		localStorage['shortnerServiceDomain'] = document.getElementById('serviceDomain').value;
+		localStorage['shortnerServicePath'] = document.getElementById('servicePath').value;
 		document.getElementById('saveMessage').innerText = "Saved!";
 	}
 };

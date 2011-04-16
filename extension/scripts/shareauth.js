@@ -92,7 +92,7 @@ ShareAuth.fromConfig = function (auth_config) {
 };
 
 ShareAuth.initCallbackPage = function () {
-    window.location.href = localStorage["shortnerServiceUrlAuth"] + '?callbackUrl=' + localStorage["shortnerServiceUrlAuthPath"];
+    window.location.href = localStorage["shortnerServiceDomain"] + localStorage["shortnerServiceUrlAuth"] + '?callbackUrl=' + localStorage["shortnerServiceUrlAuthPath"];
 };
 
 ShareAuth.getShareAuth = function() {
