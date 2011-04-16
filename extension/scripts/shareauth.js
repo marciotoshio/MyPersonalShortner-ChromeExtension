@@ -24,14 +24,6 @@ ShareAuth.initBackgroundPage = function (auth_config) {
 	return window.shareAuth;
 };
 
-ShareAuth.prototype.setAuthUrl = function (url) {
-	localStorage["shortnerServiceUrlAuth"] = url;
-};
-
-ShareAuth.prototype.setAuthPath = function (path) {
-	localStorage["shortnerServiceUrlAuthPath"] = path;
-};
-
 ShareAuth.prototype.authorize = function (callback) {
     if (this.hasToken()) {
         callback();
@@ -92,7 +84,7 @@ ShareAuth.fromConfig = function (auth_config) {
 };
 
 ShareAuth.initCallbackPage = function () {
-    window.location.href = localStorage["shortnerServiceDomain"] + localStorage["shortnerServiceUrlAuth"] + '?callbackUrl=' + localStorage["shortnerServiceUrlAuthPath"];
+    window.location.href = localStorage["shortnerServiceDomain"] + localStorage["shortnerServiceTwitterAuthPath"] + '?callbackUrl=' + localStorage["shortnerServiceTwitterAuthCallbackPath"];
 };
 
 ShareAuth.getShareAuth = function() {

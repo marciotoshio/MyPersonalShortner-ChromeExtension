@@ -20,17 +20,19 @@ var options = {
 		}
 		else
 		{
-			document.getElementById('serviceUrlAuth').value = localStorage['shortnerServiceUrlAuth'] || "";
-			document.getElementById('serviceUrlAuthPath').value = localStorage['shortnerServiceUrlAuthPath'] || "";
+			document.getElementById('serviceTwitterAuthPath').value = localStorage['shortnerServiceTwitterAuthPath'] || "";
+			document.getElementById('serviceTwitterAuthCallbackPath').value = localStorage['shortnerServiceTwitterAuthCallbackPath'] || "";
+			document.getElementById('serviceTwitterUpdateStatusPath').value = localStorage['shortnerServiceTwitterUpdateStatusPath'] || "";
 			document.getElementById('loggedOn').style.display = "none";
 			document.getElementById('loggedOff').style.display = "block";
 		}
 	},
 	
 	twitterSingIn: function() {
-		if(document.getElementById('serviceUrlAuth').value != '' && document.getElementById('serviceUrlAuthPath').value != '') {
-			localStorage['shortnerServiceUrlAuth'] = document.getElementById('serviceUrlAuth').value;
-			localStorage['shortnerServiceUrlAuthPath'] = document.getElementById('serviceUrlAuthPath').value;
+		if(document.getElementById('serviceTwitterAuthPath').value != '' && document.getElementById('serviceTwitterAuthCallbackPath').value != '' && document.getElementById('serviceTwitterUpdateStatusPath').value != '') {
+			localStorage['shortnerServiceTwitterAuthPath'] = document.getElementById('serviceTwitterAuthPath').value;
+			localStorage['shortnerServiceTwitterAuthCallbackPath'] = document.getElementById('serviceTwitterAuthCallbackPath').value;
+			localStorage['shortnerServiceTwitterUpdateStatusPath'] = document.getElementById('serviceTwitterUpdateStatusPath').value;
 			twitter.authorize(options.twitterOnAuthorized);
 		}
 		else {

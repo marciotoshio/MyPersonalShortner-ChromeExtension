@@ -24,7 +24,7 @@ var twitter = {
 	},
 	
 	updateStatus: function(status, callback) {
-		var url = 'http://localhost:7981/Api/Share/UpdateStatus'
+		var url = localStorage['shortnerServiceDomain'] + localStorage['shortnerServiceTwitterUpdateStatusPath'];
 		var method = 'POST';
 		var data = 'token=' + encodeURIComponent(twitter.getToken()) + '&tokenSecret=' + encodeURIComponent(twitter.getTokenSecret()) + '&status=' + encodeURIComponent(status);
 		common.xhrRequest(url, method, data, callback);
