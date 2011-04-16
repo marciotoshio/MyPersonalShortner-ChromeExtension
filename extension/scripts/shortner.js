@@ -76,8 +76,18 @@ var shortner = {
 		twitter.updateStatus(status, shortner.handleTwitterUpdate);
 	},
 	
-	handleTwitterUpdate: function(resp, xhr) {
-		a = resp;
+	handleTwitterUpdate: function(resp) {
+		if (this.readyState == 4) {
+			var result = JSON.parse(this.responseText);
+			if(this.status == 200) {
+				var a = result;
+			}
+			else {
+				common.handleError({'Message': result.error});
+				document.getElementById('loading').style.display = "none";
+				document.getElementById('sharing').style.display = "none";
+			}
+		}
 	}
 	
 };

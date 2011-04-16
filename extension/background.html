@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script type="text/javascript" src="scripts/chrome_ex_oauthsimple.js"></script>
-		<script type="text/javascript" src="scripts/chrome_ex_oauth.js"></script>
+		<script type="text/javascript" src="scripts/shareauth.js"></script>
 		<script type="text/javascript">
-			var oauth = ChromeExOAuth.initBackgroundPage({
-				'request_url': 'https://api.twitter.com/oauth/request_token',
-				'authorize_url': 'https://api.twitter.com/oauth/authorize',
-				'access_url': 'https://api.twitter.com/oauth/access_token',
-				'consumer_key': '5CodmDJ548luW9gkrH0sg',
-				'consumer_secret': 'bnNNQ17QBLMcQ9g5Tosbbr3ps2BHtTE8AvtKZgTmdCM',
-				'scope': '',
-				'app_name': 'My Personal Shortner'
+			ShareAuth.initBackgroundPage({
+				'auth_url': 'http://localhost:7981/Api/Share/Authorize',
+				'auth_scope': 'shareAuth'
 			});
 		</script>
 	</head>

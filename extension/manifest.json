@@ -16,5 +16,11 @@
 		"128": "images/icon128.png" 
 	},
 	"background_page": "background.html",
-	"options_page": "options.html"
+	"options_page": "options.html",
+	"content_scripts": [
+		{
+		  "matches": ["http://*/Api/Share/Authenticate*"],
+		  "js": ["scripts/contentscript.js"]
+		}
+	]
 }

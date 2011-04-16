@@ -1,13 +1,18 @@
 var common = {
-	xhrRequest: function (url, method, params, callback) {
+	xhrRequest: function (url, method, data, callback, optionalHeader) {
 		var request = new XMLHttpRequest();
+		request.onreadystatechange  = callback;
 		request.open(method, url, true);
 		if(method == 'POST')
 		{
 			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		}
-		request.onreadystatechange  = callback;
-		request.send(params);
+		if(optionalHeader != null)
+		{
+			request.setRequestHeader(optionalHeader.key, optionalHeader.value);
+		}
+		
+		request.send(data);
 	},
 	
 	handleError: function(error) {

@@ -1,22 +1,23 @@
 var twitter = {
 	isLoggedOn: function() {
-		return common.bgPage().oauth.hasToken();
+		return common.bgPage().shareAuth.hasToken();
 	},
 	
 	logOut: function() {
-		common.bgPage().oauth.clearTokens();
+		common.bgPage().shareAuth.clearTokens();
 	},
 	
 	authorize: function(callback) {
-		common.bgPage().oauth.authorize(callback);
+		common.bgPage().shareAuth.authorize(callback);
+		//common.xhrRequest('http://localhost:7981/Api/Share/Authorize', 'GET', null, callback);
 	},
 	
 	updateStatus: function(status, callback) {
-		var url = 'http://api.twitter.com/1/statuses/update.json';
-		var request = {
-			'method': 'POST',
-			'body': 'status=' + encodeURIComponent(status)
-		};
-		common.bgPage().oauth.sendSignedRequest(url, callback, request);
+		//var url = 'https://api.twitter.com/1/statuses/update.json?status=' + status;
+		//var method = 'POST';
+		//var authHeader = {'key': 'Authorization', 'value': common.bgPage().shareauth.getAuthorizationHeader(url, method)};
+		//var data = 'status=' + encodeURIComponent(status);
+		//common.xhrRequest(url, 'POST', data, callback, authHeader);
+		//common.bgPage().shareauth.sendSignedRequest(url, callback, request);
 	}
 };
