@@ -1,5 +1,5 @@
 var common = {
-	xhrRequest: function (url, method, data, callback, optionalHeader) {
+	xhrRequest: function (url, method, data, callback) {
 		var request = new XMLHttpRequest();
 		request.onreadystatechange  = callback;
 		request.open(method, url, true);
@@ -7,11 +7,6 @@ var common = {
 		{
 			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		}
-		if(optionalHeader != null)
-		{
-			request.setRequestHeader(optionalHeader.key, optionalHeader.value);
-		}
-		
 		request.send(data);
 	},
 	

@@ -9,7 +9,7 @@
 <body onload="shortner.init();">
 	<div id="container" class="rounded">
 		<header>Some Text</header>
-		<div id="success">
+		<div>
 			<div id="loading"><img src="images/ajax-loader.gif" alt="loading..."/><br />shortening...</div>
 			<textarea id="shortnedUrl" class="rounded"></textarea>
 			<section id="sharing">
@@ -17,6 +17,9 @@
 				<input type="button" value="share" onclick="shortner.share();" />
 				<br clear="all" />
 			</section>
+		</div>
+		<div id="success" class="rounded" style="display:none;">
+			<p id="successMessage"></p>
 		</div>
 		<div id="error" class="rounded" style="display:none;">
 			<p id="errorTitle"></p>

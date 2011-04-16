@@ -78,7 +78,7 @@ var shortner = {
 		if (this.readyState == 4) {
 			var result = JSON.parse(this.responseText);
 			if(this.status == 200) {
-				var a = result;
+				shortner.handleTwitterUpdateSuccess();
 			}
 			else {
 				common.handleError({'Message': result.error});
@@ -86,6 +86,12 @@ var shortner = {
 				document.getElementById('sharing').style.display = "none";
 			}
 		}
+	},
+	
+	handleTwitterUpdateSuccess: function() {
+		document.getElementById('shortnedUrl').value = "";
+		document.getElementById('successMessage').innerText = "Twitter status updated.";
+		document.getElementById('success').style.display = "block";
 	}
 	
 };

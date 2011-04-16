@@ -40,16 +40,24 @@ img.share {
 	vertical-align: text-bottom;
 }
 
-#error {
+#error, #success {
 	width: 372px;
 	margin: 3px auto;
 	padding: 3px;
-	border: 1px solid #f00;
-    background-color: #faa;
 	clear: both;
 }
 
-#errorTitle {
+#error {
+	border: 1px solid #f00;
+    background-color: #faa;
+}
+
+#success {
+	border: 1px solid #0f0;
+    background-color: #afa;
+}
+
+#errorTitle, #successMessage {
 	font-weight: bold;
 }
 

@@ -15,12 +15,18 @@ var twitter = {
 		return common.bgPage().shareAuth.getScreenName();
 	},
 	
+	getToken: function() {
+		return common.bgPage().shareAuth.getToken();
+	},
+	
+	getTokenSecret: function() {
+		return common.bgPage().shareAuth.getTokenSecret();
+	},
+	
 	updateStatus: function(status, callback) {
-		//var url = 'https://api.twitter.com/1/statuses/update.json?status=' + status;
-		//var method = 'POST';
-		//var authHeader = {'key': 'Authorization', 'value': common.bgPage().shareauth.getAuthorizationHeader(url, method)};
-		//var data = 'status=' + encodeURIComponent(status);
-		//common.xhrRequest(url, 'POST', data, callback, authHeader);
-		//common.bgPage().shareauth.sendSignedRequest(url, callback, request);
+		var url = 'http://localhost:7981/Api/Share/UpdateStatus'
+		var method = 'POST';
+		var data = 'token=' + encodeURIComponent(twitter.getToken()) + '&tokenSecret=' + encodeURIComponent(twitter.getTokenSecret()) + '&status=' + encodeURIComponent(status);
+		common.xhrRequest(url, method, data, callback);
 	}
 };
