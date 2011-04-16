@@ -37,7 +37,13 @@ ShareAuth.prototype.authorize = function (callback) {
     if (this.hasToken()) {
         callback(this.getToken(), this.getTokenSecret());
     } else {
-        chrome.tabs.create({ 'url': chrome.extension.getURL(this.callback_page) });
+        chrome.tabs.create({ 'url': chrome.extension.getURL(this.callback_page) }, function(tabCreated){
+			chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
+				if(tabCreated.id == tabId) {
+					callback(ShareAuth.getShareAuth().getToken(), ShareAuth.getShareAuth().getTokenSecret());
+				}
+			});
+		});
     }
 };
 

@@ -9,7 +9,6 @@ var twitter = {
 	
 	authorize: function(callback) {
 		common.bgPage().shareAuth.authorize(callback);
-		//common.xhrRequest('http://localhost:7981/Api/Share/Authorize', 'GET', null, callback);
 	},
 	
 	updateStatus: function(status, callback) {
