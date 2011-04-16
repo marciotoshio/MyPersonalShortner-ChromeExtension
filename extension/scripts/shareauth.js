@@ -2,13 +2,9 @@ function ShareAuth(auth_scope, opt_args) {
     this.auth_scope = "_" + auth_scope;
     this.key_token = "oauth_token";
     this.key_token_secret = "oauth_token_secret";
+	this.key_screen_name = "screen_name";
     this.callback_page = opt_args && opt_args['callback_page'] || "shareauth.html";
 };
-
-/*******************************************************************************
-* PUBLIC API METHODS
-* Call these from your background page.
-******************************************************************************/
 
 ShareAuth.initBackgroundPage = function (auth_config) {
     window.shareAuthConfig = auth_config;
@@ -16,6 +12,7 @@ ShareAuth.initBackgroundPage = function (auth_config) {
     chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
         if (request.Success) {
 			ShareAuth.getShareAuth().saveTokens(request.AccessToken.Token, request.AccessToken.TokenSecret);
+			ShareAuth.getShareAuth().setScreenName(request.ScreenName);
 			chrome.tabs.remove(sender.tab.id);
             sendResponse({ 'success': true });
         }
@@ -52,36 +49,24 @@ ShareAuth.prototype.authorize = function (callback) {
 ShareAuth.prototype.clearTokens = function () {
     delete localStorage[this.key_token + encodeURI(this.auth_scope)];
     delete localStorage[this.key_token_secret + encodeURI(this.auth_scope)];
+	delete localStorage[this.key_screen_Name + encodeURI(this.auth_scope)];
 };
 
 ShareAuth.prototype.hasToken = function () {
     return !!this.getToken();
 };
 
-/*******************************************************************************
-* PRIVATE API METHODS
-* Used by the library.  There should be no need to call these methods directly.
-******************************************************************************/
-
-ShareAuth.fromConfig = function (auth_config) {
-    return new ShareAuth(
-		auth_config['auth_scope']
-	);
-};
-
-ShareAuth.initCallbackPage = function () {
-    window.location.href = localStorage["shortnerServiceUrlAuth"] + '?callbackUrl=' + localStorage["shortnerServiceUrlAuthPath"];
-};
-
-ShareAuth.getShareAuth = function() {
-	var background_page = chrome.extension.getBackgroundPage();
-    var auth_config = background_page.shareAuthConfig;
-    return ShareAuth.fromConfig(auth_config);
-}
-
 ShareAuth.prototype.saveTokens = function (token, tokenSecret) {
     this.setToken(token);
     this.setTokenSecret(tokenSecret);
+};
+
+ShareAuth.prototype.setScreenName = function (screenName) {
+    localStorage[this.key_screen_Name + encodeURI(this.auth_scope)] = screenName;
+};
+
+ShareAuth.prototype.getScreenName = function () {
+    return localStorage[this.key_screen_Name + encodeURI(this.auth_scope)];
 };
 
 ShareAuth.prototype.setToken = function (token) {
@@ -99,3 +84,19 @@ ShareAuth.prototype.setTokenSecret = function (secret) {
 ShareAuth.prototype.getTokenSecret = function () {
     return localStorage[this.key_token_secret + encodeURI(this.auth_scope)];
 };
+
+ShareAuth.fromConfig = function (auth_config) {
+    return new ShareAuth(
+		auth_config['auth_scope']
+	);
+};
+
+ShareAuth.initCallbackPage = function () {
+    window.location.href = localStorage["shortnerServiceUrlAuth"] + '?callbackUrl=' + localStorage["shortnerServiceUrlAuthPath"];
+};
+
+ShareAuth.getShareAuth = function() {
+	var background_page = chrome.extension.getBackgroundPage();
+    var auth_config = background_page.shareAuthConfig;
+    return ShareAuth.fromConfig(auth_config);
+}

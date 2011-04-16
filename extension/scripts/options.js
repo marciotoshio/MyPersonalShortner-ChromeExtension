@@ -13,6 +13,7 @@ var options = {
 	manageTwitterSection: function() {
 		if(twitter.isLoggedOn())
 		{
+			document.getElementById('screenName').innerText = twitter.getScreenName();
 			document.getElementById('loggedOn').style.display = "block";
 			document.getElementById('loggedOff').style.display = "none";
 		}
@@ -41,7 +42,7 @@ var options = {
 		options.manageTwitterSection();
 	},
 	
-	twitterOnAuthorized: function() {
+	twitterOnAuthorized: function(token, secret) {
 		options.manageTwitterSection();
 	},
 	/* /Twitter */

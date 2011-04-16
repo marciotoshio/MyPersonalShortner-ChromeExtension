@@ -11,6 +11,10 @@ var twitter = {
 		common.bgPage().shareAuth.authorize(callback);
 	},
 	
+	getScreenName: function() {
+		return common.bgPage().shareAuth.getScreenName();
+	},
+	
 	updateStatus: function(status, callback) {
 		//var url = 'https://api.twitter.com/1/statuses/update.json?status=' + status;
 		//var method = 'POST';
