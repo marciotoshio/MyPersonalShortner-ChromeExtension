@@ -41,7 +41,7 @@ ShareAuth.prototype.authorize = function (callback) {
 ShareAuth.prototype.clearTokens = function () {
     delete localStorage[this.key_token + encodeURI(this.auth_scope)];
     delete localStorage[this.key_token_secret + encodeURI(this.auth_scope)];
-	delete localStorage[this.key_screen_Name + encodeURI(this.auth_scope)];
+	delete localStorage[this.key_screen_name + encodeURI(this.auth_scope)];
 };
 
 ShareAuth.prototype.hasToken = function () {
@@ -54,11 +54,11 @@ ShareAuth.prototype.saveTokens = function (token, tokenSecret) {
 };
 
 ShareAuth.prototype.setScreenName = function (screenName) {
-    localStorage[this.key_screen_Name + encodeURI(this.auth_scope)] = screenName;
+    localStorage[this.key_screen_name + encodeURI(this.auth_scope)] = screenName;
 };
 
 ShareAuth.prototype.getScreenName = function () {
-    return localStorage[this.key_screen_Name + encodeURI(this.auth_scope)];
+    return localStorage[this.key_screen_name + encodeURI(this.auth_scope)];
 };
 
 ShareAuth.prototype.setToken = function (token) {
