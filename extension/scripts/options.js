@@ -18,13 +18,22 @@ var options = {
 		}
 		else
 		{
+			document.getElementById('serviceUrlAuth').value = localStorage['shortnerServiceUrlAuth'] || "";
+			document.getElementById('serviceUrlAuthPath').value = localStorage['shortnerServiceUrlAuthPath'] || "";
 			document.getElementById('loggedOn').style.display = "none";
 			document.getElementById('loggedOff').style.display = "block";
 		}
 	},
 	
 	twitterSingIn: function() {
-		twitter.authorize(options.twitterOnAuthorized);
+		if(document.getElementById('serviceUrlAuth').value != '' && document.getElementById('serviceUrlAuthPath').value != '') {
+			localStorage['shortnerServiceUrlAuth'] = document.getElementById('serviceUrlAuth').value;
+			localStorage['shortnerServiceUrlAuthPath'] = document.getElementById('serviceUrlAuthPath').value;
+			twitter.authorize(options.twitterOnAuthorized);
+		}
+		else {
+			document.getElementById('twitterErrorMessage').innerText = "Twitter Service Urls are Required";
+		}
 	},
 	
 	twitterLogOut: function() {
@@ -32,7 +41,7 @@ var options = {
 		options.manageTwitterSection();
 	},
 	
-	twitterOnAuthorized: function(token, secret) {
+	twitterOnAuthorized: function() {
 		options.manageTwitterSection();
 	},
 	/* /Twitter */

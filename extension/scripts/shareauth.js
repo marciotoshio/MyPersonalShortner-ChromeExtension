@@ -1,9 +1,7 @@
-function ShareAuth(auth_url, auth_scope, opt_args) {
-    this.auth_url = auth_url;
+function ShareAuth(auth_scope, opt_args) {
     this.auth_scope = "_" + auth_scope;
     this.key_token = "oauth_token";
     this.key_token_secret = "oauth_token_secret";
-
     this.callback_page = opt_args && opt_args['callback_page'] || "shareauth.html";
 };
 
@@ -15,10 +13,6 @@ function ShareAuth(auth_url, auth_scope, opt_args) {
 ShareAuth.initBackgroundPage = function (auth_config) {
     window.shareAuthConfig = auth_config;
     window.shareAuth = ShareAuth.fromConfig(auth_config);
-
-    var url_match = chrome.extension.getURL(window.ShareAuth.callback_page);
-    var tabs = {};
-
     chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
         if (request.Success) {
 			ShareAuth.getShareAuth().saveTokens(request.AccessToken.Token, request.AccessToken.TokenSecret);
@@ -33,9 +27,17 @@ ShareAuth.initBackgroundPage = function (auth_config) {
 	return window.shareAuth;
 };
 
+ShareAuth.prototype.setAuthUrl = function (url) {
+	localStorage["shortnerServiceUrlAuth"] = url;
+};
+
+ShareAuth.prototype.setAuthPath = function (path) {
+	localStorage["shortnerServiceUrlAuthPath"] = path;
+};
+
 ShareAuth.prototype.authorize = function (callback) {
     if (this.hasToken()) {
-        callback(this.getToken(), this.getTokenSecret());
+        callback();
     } else {
         chrome.tabs.create({ 'url': chrome.extension.getURL(this.callback_page) }, function(tabCreated){
 			chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
@@ -63,13 +65,12 @@ ShareAuth.prototype.hasToken = function () {
 
 ShareAuth.fromConfig = function (auth_config) {
     return new ShareAuth(
-		auth_config['auth_url'],
 		auth_config['auth_scope']
 	);
 };
 
 ShareAuth.initCallbackPage = function () {
-    window.location.href = ShareAuth.getShareAuth().auth_url;
+    window.location.href = localStorage["shortnerServiceUrlAuth"] + '?callbackUrl=' + localStorage["shortnerServiceUrlAuthPath"];
 };
 
 ShareAuth.getShareAuth = function() {

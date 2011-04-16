@@ -62,12 +62,10 @@ var shortner = {
 	
 	share: function () {
 		var text = document.getElementById('shortnedUrl').value;
-		if(text != '')
-		{
+		if(text != '') {
 			shortner.shareWithTwitter(text);
 		}
-		else
-		{
+		else {
 			common.handleError({'Message': 'Nothing to share!'})
 		}
 	},

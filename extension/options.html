@@ -23,7 +23,12 @@
 					<p>You are logged on. <input type="button" value="Log Off" onclick="options.twitterLogOut();" /></p> 
 				</section>
 				<section id="loggedOff">
-					<p><input type="button" value="Log In" onclick="options.twitterSingIn();" /></p> 
+					<p>
+						Twitter Service Auth: <input type="text" id="serviceUrlAuth" /><br />
+						Twitter Service Auth Callback Path: <input type="text" id="serviceUrlAuthPath" /><br />
+						<input type="button" value="Log In" onclick="options.twitterSingIn();" />
+					</p> 
+					<p id="twitterErrorMessage"></p>
 				</section>
 			</fieldset>
 		</section>
