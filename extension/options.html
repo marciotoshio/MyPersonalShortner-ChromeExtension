@@ -14,7 +14,6 @@
 				<legend>Shortner</legend>
 				<p>
 					Service Domain: <input type="text" id="serviceDomain" /> <br />
-					Service Path: <input type="text" id="servicePath" /> <br />
 					<input type="button" value="Save" onclick="options.save();" />
 				</p>
 				<p id="saveMessage"></p>
@@ -28,9 +27,6 @@
 				</section>
 				<section id="loggedOff">
 					<p>
-						Twitter Service Auth: <input type="text" id="serviceTwitterAuthPath" /><br />
-						Twitter Service Auth Callback Path: <input type="text" id="serviceTwitterAuthCallbackPath" /><br />
-						Twitter Service Update Status Path: <input type="text" id="serviceTwitterUpdateStatusPath" /><br />
 						<input type="button" value="Log In" onclick="options.twitterSingIn();" />
 					</p> 
 					<p id="twitterErrorMessage"></p>

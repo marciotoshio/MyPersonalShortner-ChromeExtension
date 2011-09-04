@@ -84,7 +84,7 @@ ShareAuth.fromConfig = function (auth_config) {
 };
 
 ShareAuth.initCallbackPage = function () {
-    window.location.href = localStorage["shortnerServiceDomain"] + localStorage["shortnerServiceTwitterAuthPath"] + '?callbackUrl=' + localStorage["shortnerServiceTwitterAuthCallbackPath"];
+    window.location.href = localStorage["shortnerServiceDomain"] + '/Api/Share/Authorize' + '?callbackUrl=' + '/Api/Share/Authenticate';
 };
 
 ShareAuth.getShareAuth = function() {
